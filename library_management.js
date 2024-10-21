@@ -26,4 +26,28 @@ class Book {
         }
     }
 }
-"
+
+//Task 2: Create a Section Class
+class Section {
+    constructor(name) {
+        this.name = name;
+        this.books = [];
+    }
+
+    // Now, we are using method to add a book to the section of books
+    addBook(book) {
+        this.books.push(book);
+    }
+
+    // then we are using the filter method to get the full number of available books filtered in the section
+    getAvailableBooks() {
+        return this.books.filter(book => book.isAvailable).length;
+    }
+
+    // Now, we use map to list all books in the section by showing their titles and availabilies
+    listBooks() {
+        return this.books.map(book => {
+            return `${book.title} - ${book.isAvailable ? 'Available' : 'Borrowed'}`;
+        }).join('\n');
+    }
+}
