@@ -106,4 +106,43 @@ Section.prototype.calculateTotalBooksAvailable = function() {
     return this.books.reduce((total, book) => total + (book.isAvailable ? 1 : 0), 0);
 };
 
+//Task 6 Create and Manage Sections and Patrons
+/ Create two sections
+const fictionSection = new Section('Fiction');
+const scienceSection = new Section('Science');
 
+// Create multiple books
+const book1 = new Book('The Great Gatsby', 'F. Scott Fitzgerald', '1234567890');
+const book2 = new Book('To Kill a Mockingbird', 'Harper Lee', '0987654321');
+const book3 = new Book('A Brief History of Time', 'Stephen Hawking', '1122334455');
+const book4 = new Book('The Selfish Gene', 'Richard Dawkins', '2233445566');
+
+// Add books to sections
+fictionSection.addBook(book1);
+fictionSection.addBook(book2);
+scienceSection.addBook(book3);
+scienceSection.addBook(book4);
+
+// Create multiple patrons, including a VIP patron
+const patron1 = new Patron('John Doe');
+const vipPatron = new VIPPatron('Jane Smith');
+
+// Patrons borrowing books
+patron1.borrowBook(book1); // John borrows "The Great Gatsby"
+vipPatron.borrowBook(book2); // Jane (VIP) borrows "To Kill a Mockingbird"
+vipPatron.borrowBook(book3); // Jane (VIP) borrows "A Brief History of Time"
+
+// Returning books
+patron1.returnBook(book1); // John returns "The Great Gatsby"
+
+// List books in sections
+console.log('Fiction Section Books:');
+console.log(fictionSection.listBooks());
+console.log('Science Section Books:');
+console.log(scienceSection.listBooks());
+
+// Calculate total available books in each section
+console.log(`Total available books in Fiction: ${fictionSection.calculateTotalBooksAvailable()}`);
+console.log(`Total available books in Science: ${scienceSection.calculateTotalBooksAvailable()}`);
+
+// Commit: "Create and manage library sections and patrons"
