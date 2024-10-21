@@ -122,8 +122,8 @@ fictionSection.addBook(book2);
 scienceSection.addBook(book3);
 
 // then making the patrons
-const patron1 = new Patron('John Doe');
-const vipPatron = new VIPPatron('Jane Smith');
+const patron1 = new Patron('Lucy Davis');
+const vipPatron = new VIPPatron('Ali Rashid');
 
 // these patrons are now buying books
 patron1.borrowBook(book1); 
