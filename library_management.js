@@ -95,7 +95,7 @@ class VIPPatron extends Patron {
         if (this.priority && book.isAvailable) {
             super.borrowBook(book);
         } else {
-            console.log(`No priority for "${book.title}".`);
+            console.log(`"${book.title}" is not a priority.`);
         }
     }
 }
