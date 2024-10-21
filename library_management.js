@@ -100,4 +100,10 @@ class VIPPatron extends Patron {
     }
 }
 
+//Task 5: Handle Books Borrowing and ReturningLinks to an external site
+// here we are calculating how mamy books available for borrowing
+Section.prototype.calculateTotalBooksAvailable = function() {
+    return this.books.reduce((total, book) => total + (book.isAvailable ? 1 : 0), 0);
+};
+
 
