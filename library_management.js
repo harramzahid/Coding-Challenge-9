@@ -51,3 +51,35 @@ class Section {
         }).join('\n');
     }
 }
+
+//Task 3: Create a Patron Class
+class Patron {
+    constructor(name) {
+        this.name = name;
+        this.borrowedBooks = [];
+    }
+
+    // Now, we are going to show if it possible to borrow a book depending on its availability
+    borrowBook(book) {
+        if (book.isAvailable) {
+            book.isAvailable = false;
+            this.borrowedBooks.push(book);
+            console.log(`${this.name} borrowed "${book.title}"`);
+        } else {
+            console.log(`"${book.title}" is not available.`);
+        }
+    }
+
+    // Then we are creating a fucntion to return the borrowed book
+    returnBook(book) {
+        const index = this.borrowedBooks.indexOf(book);
+        if (index !== -1) {
+            book.isAvailable = true;
+            this.borrowedBooks.splice(index, 1);
+            console.log(`${this.name} returned "${book.title}"`);
+        } else {
+            console.log(`${this.name} has not borrowed "${book.title}"`);
+        }
+    }
+}
+
