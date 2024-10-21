@@ -64,9 +64,9 @@ class Patron {
         if (book.isAvailable) {
             book.isAvailable = false;
             this.borrowedBooks.push(book);
-            console.log(`${this.name} borrowed "${book.title}"`);
+            console.log(`${this.name} has borrowed the book"${book.title}"`);
         } else {
-            console.log(`"${book.title}" is not available.`);
+            console.log(`"${book.title}" is unavailable at this time.`);
         }
     }
 
@@ -76,9 +76,9 @@ class Patron {
         if (index !== -1) {
             book.isAvailable = true;
             this.borrowedBooks.splice(index, 1);
-            console.log(`${this.name} returned "${book.title}"`);
+            console.log(`${this.name} has returned to the library "${book.title}"`);
         } else {
-            console.log(`${this.name} has not borrowed "${book.title}"`);
+            console.log(`${this.name} did not borrow the book "${book.title}"`);
         }
     }
 }
@@ -107,42 +107,37 @@ Section.prototype.calculateTotalBooksAvailable = function() {
 };
 
 //Task 6 Create and Manage Sections and Patrons
-/ Create two sections
+// Now, we are constructing two sections
 const fictionSection = new Section('Fiction');
 const scienceSection = new Section('Science');
 
-// Create multiple books
-const book1 = new Book('The Great Gatsby', 'F. Scott Fitzgerald', '1234567890');
-const book2 = new Book('To Kill a Mockingbird', 'Harper Lee', '0987654321');
-const book3 = new Book('A Brief History of Time', 'Stephen Hawking', '1122334455');
-const book4 = new Book('The Selfish Gene', 'Richard Dawkins', '2233445566');
+// Now, we are making 3 book entries
+const book1 = new Book("1984", "George Orwell", "1234567890");
+const book2 = new Book("Brave New World", "Aldous Huxley", "0987654321");
+const book3 = new Book("The Selfish Gene", "Richard Dawkins", "1122334455");
 
-// Add books to sections
+// then, we are adding books to particular sections
 fictionSection.addBook(book1);
 fictionSection.addBook(book2);
 scienceSection.addBook(book3);
-scienceSection.addBook(book4);
 
-// Create multiple patrons, including a VIP patron
+// then making the patrons
 const patron1 = new Patron('John Doe');
 const vipPatron = new VIPPatron('Jane Smith');
 
-// Patrons borrowing books
-patron1.borrowBook(book1); // John borrows "The Great Gatsby"
-vipPatron.borrowBook(book2); // Jane (VIP) borrows "To Kill a Mockingbird"
-vipPatron.borrowBook(book3); // Jane (VIP) borrows "A Brief History of Time"
+// these patrons are now buying books
+patron1.borrowBook(book1); 
+vipPatron.borrowBook(book2); 
+vipPatron.borrowBook(book3); 
 
-// Returning books
-patron1.returnBook(book1); // John returns "The Great Gatsby"
+// Now, we record who is returning what book
+patron1.returnBook(book1); 
 
-// List books in sections
+// console logging the information
 console.log('Fiction Section Books:');
 console.log(fictionSection.listBooks());
 console.log('Science Section Books:');
 console.log(scienceSection.listBooks());
+console.log(`The total available books in the fiction department: ${fictionSection.calculateTotalBooksAvailable()}`);
+console.log(`The total available books in the science department: ${scienceSection.calculateTotalBooksAvailable()}`);
 
-// Calculate total available books in each section
-console.log(`Total available books in Fiction: ${fictionSection.calculateTotalBooksAvailable()}`);
-console.log(`Total available books in Science: ${scienceSection.calculateTotalBooksAvailable()}`);
-
-// Commit: "Create and manage library sections and patrons"
